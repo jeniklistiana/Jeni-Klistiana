@@ -1,0 +1,74 @@
+import pandas as pd
+
+#nama : Jeni Klistiana
+#kelas : 17.1C.12
+#matkul : Pemrograman Dasar
+
+#variabel
+list_nim = []
+list_nama = []
+list_uts = []
+list_uas = []
+list_total = []
+list_absen = []
+list_tugas = []
+list_grade = []
+list_ket = []
+
+
+ulang=int(input("Masukan Banyak Data :"))
+
+for i in range(ulang):
+    print ("Data Ke : " + str (i+1))
+    list_nim.append (input("Nim : "))
+    list_nama.append (input ("Nama : "))
+    list_uts.append(float(input ("Nilai UTS : "))) #30%
+    list_uas.append(float(input ("Nilai UAS : "))) #40%
+    list_absen.append(float(input ("Nilai ABSEN : "))) #10%
+    list_tugas.append(float(input ("Nilai TUGAS  : "))) #20%
+    
+    
+    
+    
+for i in range (ulang):
+    list_total.append((list_absen[i]*0.1)+(list_tugas[i]*0.2)+(list_uts[i]*0.3)+(list_uas[i]*0.4))
+
+
+    if (list_total[i] >= 80):
+        list_grade.append("GRADE A")
+        list_ket.append("ANDA LULUS")
+    elif (list_total[i] >= 70):
+        list_grade.append("GRADE B")
+        list_ket.append("ANDA LULUS")
+    elif (list_total[i] >= 60):
+        list_grade.append("GRADE C")
+        list_ket.append("ANDA LULUS")
+    elif (list_total[i] >= 50):
+        list_grade.append("GRADE D")
+        list_ket.append("ANDA TIDAK LULUS")
+    else:
+        list_grade.append("GRADE E")
+        list_ket.append("ANDA TIDAK LULUS")
+        
+#output di buat varibel mhs
+mhs = {
+    "NIM" : list_nim,
+    "Nama Lengkap" : list_nama,
+    "Nilai UTS" : list_uts,
+    "Nilai UAS" : list_uas,
+    "Nilai ABSEN" : list_absen,
+    "Nilai TUGAS" : list_tugas,
+    "Rata - Rata Nilai" : (list_total),
+    "Grade" : list_grade,
+    "Keterangan" : list_ket,
+
+}
+
+#untuk membuat tabel maka perlu variabel data_mhs   
+data_mhs = pd.DataFrame(mhs)
+
+print("====================================================Daftar Nilai Mahasiswa======================================")
+print(data_mhs)
+print("================================================================================================================")    
+    
+    
